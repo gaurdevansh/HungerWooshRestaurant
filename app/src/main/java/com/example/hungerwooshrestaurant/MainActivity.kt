@@ -16,12 +16,14 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
         binding.addMenuCard.setOnClickListener(this)
         binding.allItemCard.setOnClickListener(this)
+        binding.dispatchCard.setOnClickListener(this)
     }
 
     override fun onClick(view: View?) {
         when(view) {
             binding.addMenuCard -> startActivity(Intent(this, AddItemActivity::class.java))
             binding.allItemCard -> startActivity(Intent(this, AllItemActivity::class.java))
+            binding.dispatchCard -> startActivity(Intent(this, OutForDeliveryActivity::class.java))
         }
     }
 }
