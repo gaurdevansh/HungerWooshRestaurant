@@ -13,4 +13,6 @@
     <color name="endColor">#15BE77</color>
     <color name="transparent">#00FFFFFF</color>
     <color name="orange">#FEAD1D</color>
+    <color name="orange2">#FFC107</color>
+    <color name="red">#EF1D2F</color>
 </resources>
