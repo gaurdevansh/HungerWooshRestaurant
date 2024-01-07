@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">HungerWooshRestaurant</string>
+    <string name="sample_text">To provide you with the best of experience, we need you permission to access your devices location. By enabling location services.</string>
 </resources>

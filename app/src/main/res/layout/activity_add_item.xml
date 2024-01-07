@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".AddItemActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:scrollbars="none">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageButton
+                android:id="@+id/backBtn"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_back_arrow"
+                android:background="@color/transparent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="16dp"
+                android:layout_marginStart="16dp"
+                android:scaleType="centerCrop" />
+
+            <TextView
+                android:id="@+id/tvHeading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Add Item"
+                android:fontFamily="@font/lato_regular"
+                android:textSize="36sp"
+                android:textColor="@color/black"
+                app:layout_constraintTop_toTopOf="@id/backBtn"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <EditText
+                android:id="@+id/etFoodName"
+                android:layout_width="match_parent"
+                android:layout_height="57dp"
+                android:hint="Enter Food Name"
+                app:layout_constraintTop_toBottomOf="@id/tvHeading"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginHorizontal="8dp"
+                android:background="@drawable/edit_text_shape"
+                android:paddingStart="15dp"
+                android:elevation="5dp"
+                android:layout_marginTop="24dp"
+                android:outlineSpotShadowColor="@color/textColor"
+                android:textSize="20sp"
+                android:fontFamily="@font/lato_regular"
+                android:inputType="text"/>
+
+            <EditText
+                android:id="@+id/etFoodPrice"
+                android:layout_width="match_parent"
+                android:layout_height="57dp"
+                android:hint="Enter Food Price"
+                app:layout_constraintTop_toBottomOf="@id/etFoodName"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginHorizontal="8dp"
+                android:background="@drawable/edit_text_shape"
+                android:paddingStart="15dp"
+                android:elevation="5dp"
+                android:layout_marginTop="24dp"
+                android:outlineSpotShadowColor="@color/textColor"
+                android:textSize="20sp"
+                android:fontFamily="@font/lato_regular"
+                android:inputType="number"/>
+
+            <TextView
+                android:id="@+id/imageSelector"
+                android:layout_width="match_parent"
+                android:layout_height="57dp"
+                android:text="Select Image"
+                android:drawableEnd="@drawable/ic_add_circle"
+                android:textColor="@color/black"
+                app:layout_constraintTop_toBottomOf="@id/etFoodPrice"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginHorizontal="8dp"
+                android:gravity="center_vertical"
+                android:paddingStart="15dp"
+                android:paddingEnd="15dp"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/edit_text_shape"
+                android:fontFamily="@font/lato_regular" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardViewImage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/imageSelector"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:cardCornerRadius="15dp"
+                android:layout_marginTop="24dp">
+
+                <ImageView
+                    android:id="@+id/selectedImage"
+                    android:layout_width="175dp"
+                    android:layout_height="110dp"
+                    android:src="@drawable/ic_add_image"
+                    android:scaleType="fitCenter"/>
+
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/tvDesc"
+                android:layout_width="match_parent"
+                android:layout_height="47dp"
+                android:text="Short Description"
+                android:fontFamily="@font/lato_regular"
+                android:textColor="@color/black"
+                app:layout_constraintTop_toBottomOf="@id/cardViewImage"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="16dp"
+                android:paddingStart="15dp"
+                android:background="@drawable/edit_text_shape"
+                android:gravity="center_vertical"
+                android:layout_marginHorizontal="8dp" />
+
+            <EditText
+                android:id="@+id/etDesc"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:fontFamily="@font/lato_regular"
+                app:layout_constraintTop_toBottomOf="@id/tvDesc"
+                app:layout_constraintStart_toStartOf="@id/tvDesc"
+                app:layout_constraintStart_toEndOf="@id/tvDesc"
+                android:paddingStart="15dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/sample_text"
+                android:background="@color/white" />
+
+            <TextView
+                android:id="@+id/tvIngredient"
+                android:layout_width="match_parent"
+                android:layout_height="47dp"
+                android:text="Ingredient"
+                android:fontFamily="@font/lato_regular"
+                android:textColor="@color/black"
+                app:layout_constraintTop_toBottomOf="@id/etDesc"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="8dp"
+                android:paddingStart="15dp"
+                android:background="@drawable/edit_text_shape"
+                android:gravity="center_vertical"
+                android:layout_marginHorizontal="8dp" />
+
+            <EditText
+                android:id="@+id/etIngredient"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:fontFamily="@font/lato_regular"
+                app:layout_constraintTop_toBottomOf="@id/tvIngredient"
+                app:layout_constraintStart_toStartOf="@id/tvIngredient"
+                android:paddingStart="15dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/sample_text"
+                android:background="@color/white" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/addItemBtm"
+                android:layout_width="157dp"
+                android:layout_height="57dp"
+                android:background="@drawable/green_button_gradient"
+                android:text="Add Item"
+                android:fontFamily="@font/lato_regular"
+                android:textSize="20sp"
+                android:textColor="@color/white"
+                android:textAllCaps="false"
+                app:layout_constraintTop_toBottomOf="@id/etIngredient"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="16dp"/>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
