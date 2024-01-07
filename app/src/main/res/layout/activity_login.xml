@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LoginActivity">
+
+    <ImageView
+        android:id="@+id/ivLogo"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:src="@drawable/start_screen_logo"
+        android:layout_marginTop="50dp" />
+
+    <TextView
+        android:id="@+id/tv1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/ivLogo"
+        android:layout_marginTop="12dp"
+        app:layout_constraintStart_toStartOf="@id/ivLogo"
+        app:layout_constraintEnd_toEndOf="@id/ivLogo"
+        android:textSize="14sp"
+        android:textColor="@color/textColor"
+        android:fontFamily="@font/lato_regular"
+        android:text="Favourite Food Deliver" />
+
+    <TextView
+        android:id="@+id/tv2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tv1"
+        app:layout_constraintStart_toStartOf="@id/tv1"
+        app:layout_constraintEnd_toEndOf="@id/tv1"
+        android:layout_marginTop="12dp"
+        android:fontFamily="@font/lato_bold"
+        android:textSize="20sp"
+        android:textColor="@color/textColor"
+        android:text="Login To Your Admin Dashboard" />
+
+    <EditText
+        android:id="@+id/etEmail"
+        android:layout_width="325dp"
+        android:layout_height="57dp"
+        app:layout_constraintTop_toBottomOf="@id/tv2"
+        android:layout_marginTop="24dp"
+        android:hint="Email"
+        android:paddingLeft="15dp"
+        android:fontFamily="@font/lato_regular"
+        android:drawablePadding="15dp"
+        android:background="@drawable/edit_text_shape"
+        android:drawableLeft="@drawable/ic_email"
+        android:elevation="5dp"
+        android:inputType="textEmailAddress"
+        app:layout_constraintStart_toStartOf="@id/tv2"
+        app:layout_constraintEnd_toEndOf="@id/tv2" />
+
+    <EditText
+        android:id="@+id/etPassword"
+        android:layout_width="325dp"
+        android:layout_height="57dp"
+        app:layout_constraintTop_toBottomOf="@id/etEmail"
+        android:layout_marginTop="12dp"
+        android:hint="Password"
+        android:drawablePadding="15dp"
+        android:background="@drawable/edit_text_shape"
+        android:paddingLeft="15dp"
+        android:inputType="textPassword"
+        android:fontFamily="@font/lato_regular"
+        android:drawableLeft="@drawable/ic_lock"
+        android:elevation="5dp"
+        app:layout_constraintStart_toStartOf="@id/etEmail"
+        app:layout_constraintEnd_toEndOf="@id/etEmail" />
+
+    <TextView
+        android:id="@+id/tv3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/etPassword"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="@id/etPassword"
+        app:layout_constraintEnd_toEndOf="@id/etPassword"
+        android:fontFamily="@font/lato_black_italic"
+        android:text="Or" />
+
+    <TextView
+        android:id="@+id/tv4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tv3"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="@id/tv3"
+        app:layout_constraintEnd_toEndOf="@id/tv3"
+        android:fontFamily="@font/lato_black_italic"
+        android:text="Continue With" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnGoogle"
+        android:layout_width="152dp"
+        android:layout_height="57dp"
+        app:layout_constraintTop_toBottomOf="@id/tv4"
+        android:layout_marginTop="16dp"
+        android:text="Google"
+        android:textAllCaps="false"
+        android:fontFamily="@font/lato_regular"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/btnFacebook" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnFacebook"
+        android:layout_width="152dp"
+        android:layout_height="57dp"
+        app:layout_constraintTop_toBottomOf="@id/tv4"
+        android:layout_marginTop="16dp"
+        android:text="Facebook"
+        android:textAllCaps="false"
+        android:fontFamily="@font/lato_regular"
+        app:layout_constraintStart_toEndOf="@id/btnGoogle"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnLogin"
+        android:layout_width="152dp"
+        android:layout_height="57dp"
+        app:layout_constraintTop_toBottomOf="@id/btnGoogle"
+        android:layout_marginTop="16dp"
+        android:text="Login"
+        android:fontFamily="@font/lato_bold"
+        android:textColor="@color/white"
+        android:textAllCaps="false"
+        android:textSize="20sp"
+        android:background="@drawable/green_button_gradient"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <TextView
+        android:id="@+id/tvDontHaveAccount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/btnLogin"
+        app:layout_constraintStart_toStartOf="@id/btnLogin"
+        app:layout_constraintEnd_toEndOf="@id/btnLogin"
+        android:text="Don't Have an Account?"
+        android:textSize="14sp"
+        android:fontFamily="@font/lato_regular"
+        android:textColor="@color/textColor"
+        android:layout_marginTop="15dp" />
+
+    <TextView
+        android:id="@+id/tv5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="Designed By\nDevansh Gaur"
+        android:textAlignment="center"
+        android:textSize="14sp"
+        android:textColor="@color/textColor"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="25dp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
