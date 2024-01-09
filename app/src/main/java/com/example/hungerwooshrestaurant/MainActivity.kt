@@ -19,6 +19,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         binding.dispatchCard.setOnClickListener(this)
         binding.profileCard.setOnClickListener(this)
         binding.newUserCard.setOnClickListener(this)
+        binding.pendingOrderLayout.setOnClickListener(this)
     }
 
     override fun onClick(view: View?) {
@@ -28,6 +29,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             binding.dispatchCard -> startActivity(Intent(this, OutForDeliveryActivity::class.java))
             binding.profileCard -> startActivity(Intent(this, ProfileActivity::class.java))
             binding.newUserCard -> startActivity(Intent(this, CreateUserActivity::class.java))
+            binding.pendingOrderLayout -> startActivity(Intent(this, PendingOrderActivity::class.java))
         }
     }
 }

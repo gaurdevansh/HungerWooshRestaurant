@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="15dp"
+    android:layout_marginVertical="8dp"
+    android:elevation="2dp"
+    android:layout_marginHorizontal="8dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginStart="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:cardCornerRadius="15dp">
+
+            <ImageView
+                android:id="@+id/foodPoster"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:src="@drawable/banner1"
+                android:scaleType="centerCrop" />
+
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/customerName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/cardView"
+            android:fontFamily="@font/lato_regular"
+            android:textColor="@color/black"
+            android:layout_marginStart="16dp"
+            app:layout_constraintTop_toTopOf="@id/cardView"
+            android:textSize="16sp"
+            android:text="Customer Name"/>
+
+        <TextView
+            android:id="@+id/tvQuantity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="@id/customerName"
+            app:layout_constraintTop_toBottomOf="@id/customerName"
+            android:layout_marginTop="20sp"
+            android:fontFamily="@font/lato_regular"
+            android:textColor="@color/black"
+            android:text="Quantity"
+            android:textSize="16sp"/>
+
+        <TextView
+            android:id="@+id/foodQuantity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/tvQuantity"
+            app:layout_constraintTop_toTopOf="@id/tvQuantity"
+            app:layout_constraintBottom_toBottomOf="@id/tvQuantity"
+            android:fontFamily="@font/lato_bold"
+            android:text="8"
+            android:layout_marginStart="8dp"
+            android:textColor="@color/textColor"
+            android:textSize="20sp" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/acceptBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:background="@drawable/green_button_gradient"
+            android:fontFamily="@font/lato_regular"
+            android:textColor="@color/white"
+            android:textAllCaps="false"
+            android:layout_marginEnd="24dp"
+            android:text="Accept"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>
+
