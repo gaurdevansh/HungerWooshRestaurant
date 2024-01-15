@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "222453108334",
+    "project_id": "hungerwoosh",
+    "storage_bucket": "hungerwoosh.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:222453108334:android:79da4e016a921f2d05a07f",
+        "android_client_info": {
+          "package_name": "com.example.hungerwooshrestaurant"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCaUaXFTqwVnV4q_dU1suLY2QmnbbMkrYE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
