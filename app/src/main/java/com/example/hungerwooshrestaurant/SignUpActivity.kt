@@ -1,6 +1,5 @@
 package com.example.hungerwooshrestaurant
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -13,7 +12,6 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.auth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.database
-import kotlin.math.log
 
 class SignUpActivity : AppCompatActivity() {
 
@@ -24,6 +22,7 @@ class SignUpActivity : AppCompatActivity() {
     private lateinit var username: String
     private lateinit var restaurantName: String
     private lateinit var database: DatabaseReference
+    private val TAG = "SignUpActivity"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,6 +51,7 @@ class SignUpActivity : AppCompatActivity() {
             Toast.makeText(this, "Please fill all details", Toast.LENGTH_SHORT).show()
         } else {
             createAccount()
+            //saveUserData()
         }
     }
 
@@ -60,8 +60,8 @@ class SignUpActivity : AppCompatActivity() {
             if(task.isSuccessful) {
                 Toast.makeText(this, "Account Created Successfully", Toast.LENGTH_SHORT).show()
                 saveUserData()
-                startActivity(Intent(this, MainActivity::class.java))
-                finish()
+                //startActivity(Intent(this, MainActivity::class.java))
+                //finish()
             } else {
                 Toast.makeText(this, "Account Creation Failed", Toast.LENGTH_SHORT).show()
                 Log.d("Account", "createAccount: Failure", task.exception)
@@ -72,7 +72,17 @@ class SignUpActivity : AppCompatActivity() {
     private fun saveUserData() {
         val user = RestaurantUser(username, restaurantName, email, password)
         val userId: String = FirebaseAuth.getInstance().currentUser!!.uid
-        database.child("user").child(userId).setValue(user)
+        Log.d(TAG, "saveUserData: userId: $userId",)
+        database.child("user")
+            .child(userId)
+            .setValue(user)
+            .addOnCompleteListener { task ->
+            if(task.isSuccessful) {
+                Log.d(TAG, "saveUserData: User Data successfully written")
+            } else {
+                Log.d(TAG, "saveUserData: Data writing failed :", task.exception)
+            }
+        }
     }
 
     private fun setUpLocationChooser() {
