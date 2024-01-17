@@ -7,6 +7,8 @@ import android.util.Log
 import android.widget.Toast
 import com.example.hungerwooshrestaurant.databinding.ActivityLoginBinding
 import com.example.hungerwooshrestaurant.model.RestaurantUser
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -23,6 +25,7 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     private lateinit var database: DatabaseReference
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
@@ -37,6 +40,14 @@ class LoginActivity : AppCompatActivity() {
         }
         binding.tvDontHaveAccount.setOnClickListener {
             startActivity(Intent(this, SignUpActivity::class.java))
+        }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        val currentUser = auth.currentUser
+        if (currentUser != null) {
+            updateUi(currentUser)
         }
     }
 
