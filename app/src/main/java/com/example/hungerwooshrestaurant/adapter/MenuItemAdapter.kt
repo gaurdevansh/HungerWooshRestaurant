@@ -1,12 +1,19 @@
 package com.example.hungerwooshrestaurant.adapter
 
+import android.content.Context
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.hungerwooshrestaurant.databinding.FoodItemBinding
+import com.example.hungerwooshrestaurant.model.AllMenu
 import com.example.hungerwooshrestaurant.model.MenuItem
+import com.google.firebase.database.DatabaseReference
 
-class AllItemAdapter(private val menuItems: MutableList<MenuItem>) : RecyclerView.Adapter<AllItemAdapter.AllItemViewHolder>() {
+class MenuItemAdapter(private val menuItems: MutableList<AllMenu>,
+private val context: Context,
+private val databaseReference: DatabaseReference) : RecyclerView.Adapter<MenuItemAdapter.AllItemViewHolder>() {
 
     private val itemQuantities = IntArray(menuItems.size){1}
 
@@ -27,9 +34,9 @@ class AllItemAdapter(private val menuItems: MutableList<MenuItem>) : RecyclerVie
         fun bind(position: Int) {
             binding.apply {
                 val quantity = itemQuantities[position]
-                foodName.text = menuItems[position].name
-                foodPrice.text = menuItems[position].price
-                foodPoster.setImageResource(menuItems[position].image)
+                foodName.text = menuItems[position].foodName
+                foodPrice.text = menuItems[position].foodPrice
+                Glide.with(context).load(Uri.parse(menuItems[position].foodImage)).into(foodPoster)
                 foodQuantity.text = quantity.toString()
                 subtractBtn.setOnClickListener {
                     if(itemQuantities[position] > 1) {

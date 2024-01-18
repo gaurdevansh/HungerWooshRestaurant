@@ -1,39 +1,62 @@
 package com.example.hungerwooshrestaurant
 
-import android.app.Activity
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.hungerwooshrestaurant.adapter.AllItemAdapter
+import com.example.hungerwooshrestaurant.adapter.MenuItemAdapter
 import com.example.hungerwooshrestaurant.databinding.ActivityAllItemBinding
+import com.example.hungerwooshrestaurant.model.AllMenu
 import com.example.hungerwooshrestaurant.model.MenuItem
+import com.google.firebase.Firebase
+import com.google.firebase.database.*
 
+private const val TAG = "AllItemActivity"
 class AllItemActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityAllItemBinding
-    private lateinit var foodItems : ArrayList<MenuItem>
+    private lateinit var menuItems : ArrayList<AllMenu>
+    private lateinit var databaseReference: DatabaseReference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityAllItemBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        databaseReference = Firebase.database.reference
+
         binding.backBtn.setOnClickListener {
             finish()
         }
 
-        setUpFoodItems()
+        retrieveMenuItems()
     }
 
-    private fun setUpFoodItems() {
-        foodItems = ArrayList()
-        foodItems.add(MenuItem("Burger", "$5", R.drawable.burger))
-        foodItems.add(MenuItem("Sandwich", "$7", R.drawable.sanwich))
-        foodItems.add(MenuItem("Momo", "$8", R.drawable.momo))
-        foodItems.add(MenuItem("Fries", "$10", R.drawable.fries))
-        foodItems.add(MenuItem("Idli", "$4", R.drawable.idli))
-        foodItems.add(MenuItem("Veg Biryani", "$15", R.drawable.vegbiryani))
-        val adapter = AllItemAdapter(foodItems)
+    private fun retrieveMenuItems() {
+        menuItems = ArrayList()
+
+        val foodRef = databaseReference.child("menu")
+        foodRef.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                menuItems.clear()
+                for(foodSnapshot in snapshot.children) {
+                    val menuItem = foodSnapshot.getValue(AllMenu::class.java)
+                    menuItem?.let {
+                        menuItems.add(it)
+                    }
+                }
+                setAdapter()
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+                Log.d(TAG, "onCancelled: ", error.toException())
+            }
+        })
+    }
+
+    private fun setAdapter() {
+        val adapter = MenuItemAdapter(menuItems, this, databaseReference)
         binding.allItemsRecyclerview.layoutManager = LinearLayoutManager(this)
         binding.allItemsRecyclerview.adapter = adapter
     }
